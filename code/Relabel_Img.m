@@ -25,6 +25,7 @@ for ii = 1 : M
     end
 end
 
+reI = I;
 
 
 

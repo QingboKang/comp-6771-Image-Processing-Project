@@ -17,10 +17,11 @@ bg_img = imclose(adjust_img, SE);
 % subtracting the original from the background one, obtained contrast image
 contrast_img = imsubtract(bg_img, orig_img);
 
-imshow(orig_img), title('original');
-figure, imshow(adjust_img), title('adjust');
-figure, imshow(bg_img), title('background');
-figure, imshow(contrast_img), title('contrast');
+% imshow(orig_img), title('original');
+% figure, imshow(adjust_img), title('adjust');
+% figure, imshow(bg_img), title('background');
+% figure, imshow(contrast_img), title('contrast');
+imwrite(contrast_img, 'contrast.png');
 
 end
 

@@ -34,6 +34,9 @@ for t1 = 1 : 255
         % entropy for b group
         if(Pb > 0)
             for ii = 1 : t1
+                if( P(ii) / Pb == 0)
+                    continue;
+                end
                 Hb = Hb - (P(ii) / Pb) * log(P(ii) / Pb);
             end
         end
@@ -41,6 +44,9 @@ for t1 = 1 : 255
         % entropy for bw group
         if(Pbw > 0)
             for ii = t1 + 1 : t2
+                if P(ii) / Pbw == 0
+                    continue;
+                end
                 Hbw = Hbw - (P(ii) / Pbw) * log(P(ii) / Pbw);
             end
         end
@@ -48,6 +54,9 @@ for t1 = 1 : 255
         % entropy for w group
         if (Pw > 0)
             for ii = t2 + 1 : 256
+                if P(ii) / Pw == 0
+                    continue;
+                end
                 Hw = Hw - (P(ii) / Pw) * log(P(ii) / Pw);
             end
         end 
