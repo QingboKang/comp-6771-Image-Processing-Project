@@ -24,13 +24,39 @@ for x = ii - w : ii + w
             else
                 C(x, y) = 0;
             end  % end if
+        end % end if 
+    end % end for
+end % end for
+
+% mean
+sum = 0;
+if (Num > 0)
+    for x = ii - w : ii + w
+        for y = jj - w : jj + w 
+            if( (x >= 1 && x <= height) && (y >= 1 && y <= width))
+                sum = sum + I(x, y) * C(x, y);
+            end
         end
     end
 end
 
-% mean
+if Num > 0
+    I_mean = sum / Num;
+end
+
+% std
+std = 0;
 if (Num > 0)
-    
+    for x = ii - w : ii + w
+        for y = jj - w : jj + w 
+            if( (x >= 1 && x <= height) && (y >= 1 && y <= width))
+                std = std + C(x, y) * (I(x,y) - I_mean)^2;
+            end
+        end
+    end
+end
+if Num > 0
+    I_std = sqrt( std / Num );
 end
 
 

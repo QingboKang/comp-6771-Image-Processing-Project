@@ -21,7 +21,6 @@ H = imhist(img);
 P = H ./ (height * width);
 
 
-
 for t1 = 1 : 255
     for t2 = t1+1 : 255
         Hb = 0;
