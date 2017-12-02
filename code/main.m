@@ -14,11 +14,10 @@ end
 
 [height, width] = size(img);
 
-M = CalcStrokeWidth(img);
 
 %% contrast estimation
 % obtain contrast image - pre processing
-contrast_img = preProcessing( img );
+[contrast_img] = preProcessing( img);
 
 %% double threshold binarization
 % phase 1
@@ -27,22 +26,28 @@ contrast_img = preProcessing( img );
 [T1, T2] = doubleThresh( contrast_img );
 
 % classification
-C = zeros([height, width]);
+
+% phase 2: relabel the misclassified regions
+M = CalcStrokeWidth(contrast_img);
+[reI] = Relabel_Img(img, contrast_img, M, T1, T2);
+
 
 for ii = 1 : height
     for jj = 1 : width
         % text 
         if(contrast_img(ii, jj) <= T1)
-            C(ii, jj) = 0;
+            reI(ii, jj) = 1;
         % near-text
         elseif (contrast_img(ii, jj) > T1 && contrast_img(ii, jj) < T2)
-            C(ii, jj) = 0.5;
         % non-text
         else
-            C(ii, jj) = 1;
+            reI(ii, jj) = 0;
         end
 
     end
 end
 
-imwrite(C, 'bin.png');
+imwrite(reI, 'bin1.png')
+
+%% postProcessing
+[outImg] = postProcessing(reI, M);

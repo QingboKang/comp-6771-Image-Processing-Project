@@ -1,0 +1,44 @@
+function [ outImg ] = postProcessing( inImg, M)
+%POSTPROCESSING
+
+%% strategy 1: remove salt and pepper noise
+% apply binary morphological opertators
+
+% bridges unconnected pixels
+outImg = bwmorph(inImg, 'bridge');
+
+% remoives isolated pixels
+outImg = bwmorph(outImg, 'clean');
+
+% fills isolated interior pixels
+outImg = bwmorph(outImg, 'fill');
+
+% removes spur pixels
+outImg = bwmorph(outImg, 'spur');
+
+imwrite(outImg, 'bin_remove.png')
+
+% correct the areas that are larger than one pixels and smaller than the
+% character stroke width by using shrink and swell filters.
+[height width] = size(inImg);
+r1 = M;
+r2 = M;
+
+nr1 = floor(height / r1);
+nr2 = floor(width / r2);
+num_1 = 0;
+num_2 = 0;
+
+for ii = 0 : nr1 - 1
+    for jj = 0 : nr2 - 1
+        num_1 = 0;
+        num_2 = 0;
+        
+        for k = 1 : r1
+            for 
+        
+    end
+end
+
+end
+

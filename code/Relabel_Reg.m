@@ -1,13 +1,13 @@
-function [ Num, I_mean, I_std ] = Relabel_Reg( I, C, ii, jj, T1, T2 )
+function [ Num, I_mean, I_std ] = Relabel_Reg( I, C, ii, jj, T1, T2, w )
 %RELABEL_REG relabel the next text pixels in the image
 % I: the original image
 % C: the contrast image
 % ii, jj: image coordinate
 % T1, T2: two thresholding values
+% w: stroke width
 % Num: the number of high contrast pixels
 % I_mean, I_std: the mean and the standard deviation of these pixels
 
-w = 3;
 
 Num = 0;
 I_mean = 0;
@@ -56,7 +56,7 @@ if (Num > 0)
     end
 end
 if Num > 0
-    I_std = sqrt( std / Num );
+    I_std = sqrt( double(std / Num) );
 end
 
 

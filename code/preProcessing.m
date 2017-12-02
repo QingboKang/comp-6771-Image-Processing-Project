@@ -1,4 +1,4 @@
-function [ contrast_img ] = preProcessing( orig_img )
+function [ contrast_img] = preProcessing( orig_img)
 % contrast estimation
 
 img_size=size(orig_img);
@@ -9,9 +9,11 @@ end
 % adjust image
 adjust_img = imadjust(orig_img);
 
+M = CalcStrokeWidth(adjust_img);
+
 % extract background image using the gray-level morphological closing
 % operation
-SE = strel('square',5);
+SE = strel('square', 2*M + 1);
 bg_img = imclose(adjust_img, SE);
 
 % subtracting the original from the background one, obtained contrast image
