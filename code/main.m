@@ -50,4 +50,4 @@ end
 imwrite(reI, 'bin1.png')
 
 %% postProcessing
-[outImg] = postProcessing(reI, M);
+[outImg] = postProcessing(reI, M, contrast_img);
