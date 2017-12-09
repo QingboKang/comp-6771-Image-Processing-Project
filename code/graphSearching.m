@@ -1,6 +1,5 @@
-function [ outImg ] = graphBuild( ipImg, strokeImg )
-% build a graph of blocks of the image as mentioned and remove the blocks
-% included in the generated graphs to remove block noise
+function [ outImg ] = graphSearching( ipImg, strokeImg )
+% GRAPHSEARCHING
 
 w = CalcStrokeWidth(strokeImg) + 1;
 w = uint8(2*w+1);

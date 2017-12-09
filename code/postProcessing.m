@@ -45,10 +45,8 @@ for ii = 0 : nr1 - 1
             end
         end
         if(num_1 == num_2)
-            fprintf('black\n');  
             outImg( (ii*r1)+1 : (ii*r1)+r1-1, (jj*r2)+1 : (jj*r2)+r2-1 ) = 0;
-        elseif (num_1 == num_2 + 2*(r1+r2-2))
-            fprintf('white\n');           
+        elseif (num_1 == num_2 + 2*(r1+r2-2)) 
             outImg( (ii*r1)+1 : (ii*r1)+r1-1, (jj*r2)+1 : (jj*r2)+r2-1 ) = 1;
         end
     end
@@ -57,7 +55,7 @@ end
 imwrite(outImg, 'bin_remove2.png')
 
 %% strategy 2: remove block noise
-outImg = graphBuild(outImg, contrast_img );
+outImg = graphSearching(outImg, contrast_img );
 
 imwrite(outImg, 'bin_remove3.png')
 

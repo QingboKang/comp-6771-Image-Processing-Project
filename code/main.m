@@ -5,7 +5,8 @@ clc, clear;
 close all;
 
 % read image
-img = imread('3_10.jpg');
+% img = imread('3_10.jpg');
+img = imread('H02.bmp');
 
 % convert rgb to grayscale
 if numel(size(img)) > 2
