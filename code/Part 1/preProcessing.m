@@ -22,7 +22,7 @@ contrast_img = imsubtract(bg_img, orig_img);
 % imshow(orig_img), title('original');
 % figure, imshow(adjust_img), title('adjust');
 % figure, imshow(bg_img), title('background');
-% figure, imshow(contrast_img), title('contrast');
+figure, imshow(contrast_img), title('Pre-processing (contrast estimation) image');
 imwrite(contrast_img, 'contrast.png');
 
 end

@@ -16,7 +16,6 @@ outImg = bwmorph(outImg, 'fill');
 % removes spur pixels
 outImg = bwmorph(outImg, 'spur');
 
-imwrite(outImg, 'bin_remove1.png')
 
 % correct the areas that are larger than one pixels and smaller than the
 % character stroke width by using shrink and swell filters.
@@ -52,12 +51,12 @@ for ii = 0 : nr1 - 1
     end
 end
 
-imwrite(outImg, 'bin_remove2.png')
 
 %% strategy 2: remove block noise
 outImg = graphSearching(outImg, contrast_img );
 
-imwrite(outImg, 'bin_remove3.png')
+figure, imshow(outImg), title('Post-processing (noise removal) image');
+imwrite(outImg, 'noise_removal.png')
 
 end
 

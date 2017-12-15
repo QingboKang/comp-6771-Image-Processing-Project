@@ -48,7 +48,8 @@ for ii = 1 : height
     end
 end
 
-imwrite(reI, 'bin1.png')
+figure, imshow(reI), title('Double threshold binarization image');
+imwrite(reI, 'double_thres_result.png')
 
 %% postProcessing
 [outImg] = postProcessing(reI, M, contrast_img);

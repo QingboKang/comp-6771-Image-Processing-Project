@@ -32,8 +32,7 @@ function [outImg, markNodes] = markNeighbour (ipImg, nodesLst, iEle, jEle, w)
 
 [rm, rn] = size(nodesLst);
 markNodes = nodesLst;
-%n1Arr,n2Arr
-%edgeExist = 0;
+
 outImg = ipImg;
 
 if(iEle > 1)
